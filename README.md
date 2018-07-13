@@ -1,6 +1,6 @@
 # DH01-PhpMvc
 
-### (`dh01-phpmvc.test`)
+### (`http://dh01-phpmvc.test`)
 
 ## 1. `public/index.php`
 * Set up error reporting and handling
@@ -8,9 +8,9 @@
   ```php
   { 
     ["/^$/i"] => { ["controller"] => "Home" ["action"] => "index" }
-    ["/^(?P[a-z-]+)\/(?P[a-z-]+)$/i"] => { }
-    ["/^(?P[a-z-]+)\/(?P\d+)\/(?P[a-z-]+)$/i"] => { }
-    ["/^admin\/(?P[a-z-]+)\/(?P[a-z-]+)$/i"] => { ["namespace"] => "Admin" }
+    ["/^(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i"] => { }
+    ["/^(?P<controller>[a-z-]+)\/(?P<id>\d+)\/(?P<action>[a-z-]+)$/i"] => { }
+    ["/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i"] => { ["namespace"] => "Admin" }
   }
   ```
 * For example: `"posts/index"` route results in the following parameters
@@ -34,3 +34,7 @@
 * Uses `Twig` templating engine
 * Data comes from `App\Controllers\Posts.php` which uses `App\Models\Post.php`
 
+## 4. `Core\Error.php`
+* Converts all errors to exceptions by throwing `ErrorException`
+* If `Config::SHOW_ERRORS` is `true` (i.e. development mode) show error message in browser
+* If `Config::SHOW_ERRORS` is `false` (i.e. production mode) log error message to file
