@@ -1,0 +1,20 @@
+{
+  "name": "udemy/dh01-phpmvc",
+  "description": "PHP MVC framework",
+  "authors": [
+    {
+      "name": "Chi Lin",
+      "email": "chilin89117@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+       "Core\\": "Core/",
+       "App\\": "App/"
+    }
+  },
+  "require": {
+    "twig/twig": "^2.0"
+  }
+}
